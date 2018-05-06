@@ -1,0 +1,53 @@
+.root {
+    -fx-text-fill: #DDD;
+    -fx-background-color: #6D6D6D;
+}
+
+.toolbar {
+    -fx-background-color: #424242;
+    -fx-pref-height: 55;
+    -fx-pref-width: 600;
+}
+
+.icons-rippler {
+    -jfx-rippler-fill: #00C8FF;
+    -jfx-mask-type: CIRCLE;
+}
+
+.icons-rippler:hover {
+    -fx-cursor: hand;
+}
+
+.icon {
+    -fx-fill: #DDD;
+}
+
+.icon-pane {
+    -fx-padding: 10;
+}
+
+
+.jfx-combo-box .cell {
+    -fx-text-fill: #DDD;
+    -fx-background-color: transparent;
+}
+
+.jfx-combo-box .label {
+    -fx-text-fill: #DDD;
+}
+
+.jfx-combo-box .list-view .list-cell {
+    -fx-background-color: transparent;
+}
+
+.jfx-combo-box .list-view .list-cell:hover {
+     -fx-background-color: #4059a9;
+}
+
+.jfx-combo-box .list-view .list-cell:selected {
+    -fx-background-color: #4059a9;
+}
+
+.jfx-combo-box .list-view {
+    -fx-background-color: #1B1B1B;
+}

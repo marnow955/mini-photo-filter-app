@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ProgressIndicator?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDrawersStack?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+    <top>
+        <JFXToolbar styleClass="toolbar" BorderPane.alignment="CENTER">
+            <left>
+                <HBox alignment="CENTER_LEFT" spacing="5.0" BorderPane.alignment="CENTER">
+                    <JFXRippler position="BACK" styleClass="icons-rippler" onMouseClicked="#openFile">
+                        <StackPane styleClass="icon-pane">
+                            <MaterialIconView glyphName="IMAGE" size="26.0" styleClass="icon"/>
+                        </StackPane>
+                    </JFXRippler>
+                    <JFXRippler position="BACK" styleClass="icons-rippler" onMouseClicked="#saveImage">
+                        <StackPane styleClass="icon-pane">
+                            <MaterialIconView glyphName="SAVE" size="26.0" styleClass="icon"/>
+                        </StackPane>
+                    </JFXRippler>
+                    <JFXCheckBox fx:id="originalTransform" textFill="#dddddd" unCheckedColor="#dddddd" selected="true">
+                        Transform original image
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </JFXCheckBox>
+                </HBox>
+            </left>
+            <center>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="25.0"
+                      BorderPane.alignment="CENTER">
+                    <JFXComboBox fx:id="filterTypeSelector" onAction="#selectFilterType"
+                                 promptText="Select filter type...">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Low-pass"/>
+                                <String fx:value="High-pass"/>
+                                <String fx:value="Move and subtract"/>
+                                <String fx:value="Gradient"/>
+                                <String fx:value="Emboss"/>
+                                <String fx:value="Laplace"/>
+                                <String fx:value="Contours"/>
+                                <String fx:value="Statistic"/>
+                            </FXCollections>
+                        </items>
+                    </JFXComboBox>
+                    <JFXComboBox fx:id="filterSelector" onAction="#transformImage" promptText="Select filter..."
+                                 visibleRowCount="20"/>
+                    <ProgressIndicator fx:id="progressIndicator" visible="false"/>
+                </HBox>
+            </center>
+            <right>
+                <JFXRippler position="BACK" styleClass="icons-rippler" onMouseClicked="#discardChanges"
+                            BorderPane.alignment="CENTER">
+                    <StackPane styleClass="icon-pane">
+                        <MaterialIconView glyphName="DELETE" size="26.0" styleClass="icon"/>
+                    </StackPane>
+                </JFXRippler>
+            </right>
+            <padding>
+                <Insets left="15.0" right="15.0"/>
+            </padding>
+        </JFXToolbar>
+    </top>
+    <center>
+        <JFXDrawersStack BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets top="20" bottom="20"/>
+            </BorderPane.margin>
+            <ImageView fx:id="imageView" fitHeight="${imageView.parent.height}" fitWidth="${imageView.parent.width}"
+                       pickOnBounds="true" preserveRatio="true"/>
+        </JFXDrawersStack>
+    </center>
+    <stylesheets>
+        <URL value="@../styles/style.css"/>
+    </stylesheets>
+</BorderPane>
