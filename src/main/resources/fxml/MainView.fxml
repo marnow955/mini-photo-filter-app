@@ -25,12 +25,12 @@
             <left>
                 <HBox alignment="CENTER_LEFT" spacing="5.0" BorderPane.alignment="CENTER">
                     <JFXRippler position="BACK" styleClass="icons-rippler" onMouseClicked="#openFile">
-                        <StackPane styleClass="icon-pane">
+                        <StackPane fx:id="openTooltipPane" styleClass="icon-pane">
                             <MaterialIconView glyphName="IMAGE" size="26.0" styleClass="icon"/>
                         </StackPane>
                     </JFXRippler>
                     <JFXRippler position="BACK" styleClass="icons-rippler" onMouseClicked="#saveImage">
-                        <StackPane styleClass="icon-pane">
+                        <StackPane fx:id="saveTooltipPane" styleClass="icon-pane">
                             <MaterialIconView glyphName="SAVE" size="26.0" styleClass="icon"/>
                         </StackPane>
                     </JFXRippler>
@@ -68,7 +68,7 @@
             <right>
                 <JFXRippler position="BACK" styleClass="icons-rippler" onMouseClicked="#discardChanges"
                             BorderPane.alignment="CENTER">
-                    <StackPane styleClass="icon-pane">
+                    <StackPane fx:id="discardTooltipPane" styleClass="icon-pane">
                         <MaterialIconView glyphName="DELETE" size="26.0" styleClass="icon"/>
                     </StackPane>
                 </JFXRippler>

@@ -5,10 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import photo.processor.core.filters.Convolution;
 import photo.processor.core.filters.contour.PrewittKernels;
@@ -31,6 +33,12 @@ import java.util.function.Supplier;
 
 public class MainController {
 
+    @FXML
+    private StackPane discardTooltipPane;
+    @FXML
+    private StackPane saveTooltipPane;
+    @FXML
+    private StackPane openTooltipPane;
     @FXML
     private ImageView imageView;
     @FXML
@@ -67,6 +75,13 @@ public class MainController {
 
     @FXML
     private void initialize() {
+        Tooltip openImageTooltip = new Tooltip("Open image");
+        Tooltip saveImageTooltip = new Tooltip("Save image");
+        Tooltip discardTooltip = new Tooltip("Discard all changes");
+        Tooltip.install(openTooltipPane, openImageTooltip);
+        Tooltip.install(saveTooltipPane, saveImageTooltip);
+        Tooltip.install(discardTooltipPane, discardTooltip);
+
         lpfOptions = FXCollections.observableArrayList(
                 "Average", "Square", "Circular", "LP1", "LP2", "LP3", "Pyramidal", "Conical",
                 "Gauss1", "Gauss2", "Gauss3", "Gauss4", "Gauss5"
@@ -186,6 +201,7 @@ public class MainController {
         if (image != null) {
             imageView.setImage(image);
             originalImage = image;
+            filterTypeSelector.getSelectionModel().select(-1);
         }
     }
 
